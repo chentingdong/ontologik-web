@@ -1,0 +1,19 @@
+{
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "javascript.preferences.importModuleSpecifier": "non-relative",
+  "javascript.format.placeOpenBraceOnNewLineForControlBlocks": false,
+  "typescript.format.placeOpenBraceOnNewLineForControlBlocks": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.options": {
+    "configFile": ".eslintrc.js"
+  },
+  "eslint.workingDirectories": [
+    "./src/**/*",
+    "./tests/**/*"
+  ],
+  "eslint.lintTask.enable": true,
+  "eslint.format.enable": true,
+  "apollographql.trace.server": "messages"
+}

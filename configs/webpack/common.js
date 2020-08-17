@@ -1,11 +1,15 @@
 // shared config (dev and prod)
-const {resolve} = require('path');
-const {CheckerPlugin} = require('awesome-typescript-loader');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { resolve } = require('path')
+const { CheckerPlugin } = require('awesome-typescript-loader')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    modules: [resolve(__dirname, "../../src"), "node_modules"],
+    alias: {
+      "react-dom": "@hot-loader/react-dom",
+    },
   },
   context: resolve(__dirname, '../../src'),
   module: {
@@ -32,17 +36,45 @@ module.exports = {
         ],
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        loaders: [
-          'file-loader?hash=sha512&digest=hex&name=img/[hash].[ext]',
-          'image-webpack-loader?bypassOnDebug&optipng.optimizationLevel=7&gifsicle.interlaced=false',
+        test: /\.less$/,
+        use: [
+          { loader: "style-loader" },
+          { loader: "css-loader" },
+          {
+            loader: "less-loader",
+            options: {
+              lessOptions: {
+                javascriptEnabled: true,
+              },
+            },
+          },
+        ],
+      },
+      {
+        test: /\.html$/,
+        exclude: /node_modules/,
+        loader: "html-loader",
+      },
+      {
+        test: /\.(png|jp(e*)g|svg|gif)$/i,
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              // Convert images < 8kb to base64 strings
+              limit: 8000,
+              name: "images/[hash]-[name].[ext]",
+            },
+          },
         ],
       },
     ],
   },
   plugins: [
     new CheckerPlugin(),
-    new HtmlWebpackPlugin({template: 'index.html.ejs',}),
+    new HtmlWebpackPlugin({ template: 'index.html.ejs', }),
+    require("tailwindcss"),
+    require("autoprefixer"),
   ],
   externals: {
     'react': 'React',
@@ -50,5 +82,5 @@ module.exports = {
   },
   performance: {
     hints: false,
-  },
-};
+  }
+}

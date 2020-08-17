@@ -1,13 +1,37 @@
 {
     "compilerOptions": {
         "outDir": "./dist/",
-        "sourceMap": true,
         "noImplicitAny": false,
-        "module": "commonjs",
-        "target": "es5",
+        "module": "es6",
+        "moduleResolution": "node",
+        "noResolve": false,
+        "removeComments": true,
+        "sourceMap": true,
+        "allowJs": true,
+        "target": "es6",
         "jsx": "react",
-        "lib": ["es5", "es6", "dom"]
+        "tsx": "react",
+        "esModuleInterop": true,
+        "lib": [
+            "es6",
+            "dom"
+        ],
+        "resolveJsonModule": true,
+        "inlineSources": true,
+        "sourceRoot": "/",
+        "baseUrl": "./",
+        "paths": {
+            "*": [
+                "src/*",
+                "tests/*",
+                "data/*"
+            ]
+        },
+        "allowSyntheticDefaultImports": true
     },
+    "exclude": [
+        "./node_modules/**/*"
+    ],
     "include": [
         "./src/**/*"
     ],
