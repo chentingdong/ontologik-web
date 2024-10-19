@@ -12,7 +12,7 @@
     "starter",
     "boilerplate"
   ],
-  "author": "Walid Saba, Baiji He, Naghi Prasad, Tingdong Chen",
+  "author": "Walid Saba, Baiji He, Tingdong Chen, Naghi Prasad",
   "license": "MIT",
   "scripts": {
     "prebuild": "rebuild-node-sass && yarn run build:tailwind",

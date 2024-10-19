@@ -4,7 +4,7 @@
   "javascript.format.placeOpenBraceOnNewLineForControlBlocks": false,
   "typescript.format.placeOpenBraceOnNewLineForControlBlocks": false,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   "eslint.options": {
     "configFile": ".eslintrc.js"
